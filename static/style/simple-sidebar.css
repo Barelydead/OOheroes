@@ -1,0 +1,150 @@
+/*!
+ * Start Bootstrap - Simple Sidebar (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+@import url('https://fonts.googleapis.com/css?family=Anton');
+
+ body {
+    overflow-x: hidden;
+ }
+
+ html {
+     overflow-y: scroll;
+ }
+
+ h1 {
+     font-family: 'Anton', sans-serif;
+ }
+
+ h1, h2, h3, h4, p, span, label, th, tr {
+     color: white;
+ }
+
+ .page-content-wrapper {
+     overflow: auto;
+ }
+
+/* backgrounds */
+
+ .page-content-wrapper {
+     min-height: 100vh;
+     background-image: url("../backgrounds/ally2.jpeg");
+     background-size: cover;
+     background-repeat: no-repeat;
+ }
+
+.container-fluid {
+ 	width: 1024px;
+    background: #000000;
+ 	background: RGBA(0, 0, 0, 0.7);
+    min-height: 100vh;
+ }
+
+
+
+/* nav Styles */
+.main-nav {
+    background-color: black;
+}
+
+.top-nav li {
+    margin: 2px 25px;
+    float: left;
+    font-size: 20px;
+    list-style-type: none;
+}
+
+.top-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+.top-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+.top-nav li.active a {
+    text-decoration: underline;
+    color: white;
+}
+
+.sidebar-brand {
+	position: absolute;
+	top: 0;
+    font-size: 40px;
+    color: #111;
+	left: -460px;
+}
+
+@media(min-width:768px) {
+    .wrapper.toggled {
+        padding-left: 0;
+    }
+
+    .sidebar-wrapper {
+        width: 250px;
+    }
+
+    .wrapper.toggled .sidebar-wrapper {
+        width: 0;
+    }
+
+    .wrapper.toggled .page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
+
+.hero-icon {
+    float: left;
+    height: 160px;
+    margin-right: 10px;
+}
+
+.character {
+    clear: both;
+    margin-bottom: 2em;
+    padding: 5px 0;
+}
+
+.character span {
+    margin-left: 45px;
+}
+
+.villan {
+    background: grey;
+    background: RGBA(200, 200, 200, 0.5);
+    color: white;
+}
+
+.right {
+    float: right;
+}
+
+.table-striped > tbody > tr:nth-of-type(2n+1) {
+    background-color: black;
+}
+
+.character span a {
+    color: #E16222;
+}
+
+.character span a:hover {
+    color: black;
+}
+
+.welcome h1 {
+    font-size: 165px;
+}
+
+.btn-primary {
+    background: black;
+}
+
+.btn-danger {
+    background: red;
+}

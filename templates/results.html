@@ -1,0 +1,41 @@
+{% include 'header.html' %}
+
+
+<!-- Page Content -->
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>All quest results</h1>
+                <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Quest name</th>
+                    <th>Villans</th>
+                    <th>Heroes</th>
+                    <th>Winning team</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {{ controller.table_results() | safe }}
+                </tbody>
+              </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <form method="post" action="{{ url_for('results') }}">
+                    <button type="submit" class="btn btn-primary">Reset history</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+{% include 'footer.html' %}

@@ -1,0 +1,42 @@
+{% include 'header.html' %}
+
+
+<!-- Page Content -->
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Betting History</h1>
+                <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Quest name</th>
+                    <th>New balance</th>
+                    <th>Bet</th>
+                    <th>Outcome</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {{ controller.table_bets() | safe }}
+                </tbody>
+              </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <form method="post" action="{{ url_for('bets') }}">
+                    <button type="submit" class="btn btn-primary">Reset balance</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+{% include 'footer.html' %}

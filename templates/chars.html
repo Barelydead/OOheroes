@@ -1,0 +1,130 @@
+{% include 'header.html' %}
+
+
+<!-- Page Content -->
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+            <h1>Character base</h1>
+            </div>
+        </div>
+        {% set i = request.args.get("id") | int - 1 %}
+        {% if request.args.get("type") == "hero" %}
+            <h2>Edit/remove {{ controller.heroes[i].name }}</h2>
+            <form method="GET" action="{{ url_for('chars') }}">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" class="form-control" value="{{ controller.heroes[i].name }}" />
+                </div>
+
+                <div class="form-group">
+                    <label for="hp">HP</label>
+                    <input type="number" step="0.1" name="hp" class="form-control" value="{{ controller.heroes[i].hp | int }}" />
+                </div>
+
+                <div class="form-group">
+                    <label for="damage">damage</label>
+                    <input type="number" step="0.1" name="damage" class="form-control" value="{{ controller.heroes[i].damage | int }}" />
+                </div>
+
+                <div class="form-group">
+                    <label for="armor">armor</label>
+                    <input type="number" step="0.1" name="armor" class="form-control" value="{{ controller.heroes[i].armor | int }}" />
+                </div>
+
+                <div class="form-group">
+                    <label for="crit">critical blow</label>
+                    <input type="number" step="0.01" name="crit" class="form-control" value="{{ controller.heroes[i].critical_blow | float }}" />
+                </div>
+
+                <input type="hidden" name="editId" value="{{ controller.heroes[i].id | int }}" />
+
+                <button name="edit" value="hero" type="submit" class="btn btn-primary">edit</button>
+                <button name="remove" value="hero" type="submit" class="btn btn-danger">remove</button>
+            </form>
+        {% elif request.args.get("type") == "villan" %}
+        <h2>Edit/remove {{ controller.villans[i].name }}</h2>
+        <form method="GET" action="{{ url_for('chars') }}">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" class="form-control" value="{{ controller.villans[i].name }}" />
+            </div>
+
+            <div class="form-group">
+                <label for="hp">HP</label>
+                <input type="number" step="0.1" name="hp" class="form-control" value="{{ controller.villans[i].hp | int }}" />
+            </div>
+
+            <div class="form-group">
+                <label for="damage">damage</label>
+                <input type="number" step="0.1" name="damage" class="form-control" value="{{ controller.villans[i].damage | int }}" />
+            </div>
+
+            <div class="form-group">
+                <label for="armor">armor</label>
+                <input type="number" step="0.1" name="armor" class="form-control" value="{{ controller.villans[i].armor | int }}" />
+            </div>
+
+            <div class="form-group">
+                <label for="crit">critical blow</label>
+                <input type="number" step="0.01" name="crit" class="form-control" value="{{ controller.villans[i].critical_blow | float }}" />
+            </div>
+            <input type="hidden" name="editId" value="{{ controller.villans[i].id | int }}" />
+
+            <button name="edit" value="villan" type="submit" class="btn btn-primary">edit</button>
+            <button name="remove" value="villan" type="submit" class="btn btn-danger">remove</button>
+        </form>
+        {% endif %}
+
+
+        <div class="row">
+            <div class="col-lg-6">
+                <h2>Hero roster</h2>
+                {% for chars in controller.heroes %}
+                    <div class="character hero">
+                        <img src="{{ chars.image }}" class="hero-icon" alt="hero-icon">
+                        <h2>{{ chars.name }}</h2>
+                        <p>Damage: {{ chars.damage }}</p>
+                        <p>HP: {{ chars.hp }}</p>
+                        <p>Armor: {{ chars.armor }}</p>
+                        <p>Critical Blow: {{ chars.critical_blow }}</p>
+                        <span><a href="?type=hero&id={{chars.id}}">Edit Hero</a></span>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="col-lg-6">
+                <h2>Villans roster</h2>
+                {% for chars in controller.villans %}
+                    <div class="character villan">
+                        <img src="{{ chars.image }}" class="hero-icon" alt="hero-icon">
+                        <h2>{{ chars.name }}</h2>
+                        <p>Damage: {{ chars.damage }}</p>
+                        <p>HP: {{ chars.hp }}</p>
+                        <p>Armor: {{ chars.armor }}</p>
+                        <p>Critical Blow: {{ chars.critical_blow }}</p>
+                        <span><a href="?type=villan&id={{chars.id}}">Edit Hero</a></span>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <form action="{{ url_for('chars') }}">
+                    <input type="hidden" name="init" value="true">
+                    <button type="submit" class="btn btn-primary">Reset characters</button>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+{% include 'footer.html' %}

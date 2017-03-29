@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Black Ops DB</title>
+
+
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static',filename='style/simple-sidebar.css') }}" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <div class="row main-nav">
+            <!--top nav-->
+            <div class="col-lg-6 col-lg-offset-3 nav">
+                <ul class="top-nav">
+                    <li class="sidebar-brand">
+                    <a href="{{ url_for('main') }}">
+                        Martel Blackops
+                    </a>
+                    </li>
+                    <li {%- if request.path == "/chars" %} class="active" {% endif %}>
+                        <a href="{{ url_for('chars') }}">Characters</a>
+                    </li>
+                    <li {%- if request.path == "/quests" %} class="active" {% endif %}>
+                        <a href="{{ url_for('quests') }}">Quests</a>
+                    </li>
+                    <li {%- if request.path == "/results" %} class="active" {% endif %}>
+                        <a href="{{ url_for('results') }}">Results</a>
+                    </li>
+                    <li {%- if request.path == "/bets" %} class="active" {% endif %}>
+                        <a href="{{ url_for('bets') }}">Bet history</a>
+                    </li>
+                    <li {%- if request.path == "/addchar" %} class="active" {% endif %}>
+                        <a href="{{ url_for('addchar') }}">Recruit characters</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- /#top-nav -->

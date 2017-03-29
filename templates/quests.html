@@ -1,0 +1,90 @@
+{% include 'header.html' %}
+
+
+<!-- Page Content -->
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <h1>Start a new quest</h1>
+                <form method="GET">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Questname" class="form-control">
+                    </div>
+                    <input type="hidden" name="quest" value="true">
+                    <button type="submit" class="btn btn-primary">new quest</button>
+                </form>
+            </div>
+        </div>
+
+        {% if controller.check_available_chars() == "true" %}
+
+        {% if request.args.get("quest") %}
+        <div class="row">
+            <div class="col-lg-6">
+            <h2>{{ request.args.get("name") }}</h2>
+            <p>Villans to defeat.</p>
+            <p>{{ controller.print_quest() | safe}}</p>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-6">
+            <h2>Choose heroes</h2>
+                <form class="form-group" method="GET" action="{{ url_for('results') }}">
+                    {% for hero in controller.heroes %}
+                        {% if hero.hp > 0 %}
+                        <input type="checkbox" name="hero" value="{{hero.name}}"> {{ hero.print_box() | safe }}</p>
+                        {% else %}
+                        <p>To Low HP to fight</p>
+                        {{ hero.print_box() | safe }}
+                        {% endif %}
+                    {% endfor %}
+
+            </div>
+            <div class="col-lg-6">
+                <h2>Bet amount</h2>
+                <div class="form-group">
+                    <label for="number">Bet amount</label>
+                    <input type="range" min="0" max="{{ controller.get_last_balance() }}" step="10" value="250" class="bar" name="betamount">
+                    <p>0<span class="right">{{ controller.get_last_balance() }}</span></p>
+                </div>
+                <div class="form-group">
+                    <label for="winteam">Pick winning team</label><br>
+                    <input type="radio" name="winteam" value="heroes"><span> Heroes </span><br>
+                    <input type="radio" name="winteam" value="villans"><span> Villans </span>
+                </div>
+                <input type="hidden" name="quest" value="false">
+                <button type="submit" class="btn btn-default bottom">Fight</button>
+            </div>
+        </div>
+        {% endif %}
+        </div>
+
+
+        {% else %}
+
+        <div class="row">
+            <div class="col-lg-6">
+                <h2>Not enough characters available</h2>
+                <p>Go to <a href="">characters</a> to edit a character or <a href="">recruit</a> to recruit a character </p>
+                <p>To mend a character increase the HP</p>
+            </div>
+        </div>
+
+        {% endif %}
+
+
+
+
+
+
+    </div>
+</div>
+<!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+{% include 'footer.html' %}
